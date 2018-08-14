@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Smart Contract &mdash; totle  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Suggestor" href="suggestor.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> totle
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="graphql.html">Graph QL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="suggestor.html">Suggestor</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Smart Contract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contract-address">contract address</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#abi">abi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executeorders">executeOrders</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">totle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Smart Contract</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/smartcontract.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="smart-contract">
+<h1>Smart Contract<a class="headerlink" href="#smart-contract" title="Permalink to this headline">¶</a></h1>
+<p>All of Totle is powered by a Smart Contract at it’s core, that executes a series of buys or sells against the multiple DEXes we support.</p>
+<div class="section" id="contract-address">
+<h2>contract address<a class="headerlink" href="#contract-address" title="Permalink to this headline">¶</a></h2>
+<p>Our contract address is currently <code class="docutils literal notranslate"><span class="pre">0xd94c60e2793ad587400d86e4d6fd9c874f0f79ef</span></code>. Note that the most up-to-date contract address is returned by the Suggestor API.</p>
+</div>
+<div class="section" id="abi">
+<h2>abi<a class="headerlink" href="#abi" title="Permalink to this headline">¶</a></h2>
+<p>Our ABI is currently <code class="docutils literal notranslate"><span class="pre">[{&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;owner&quot;,&quot;outputs&quot;:[{&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;address&quot;}],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;constant&quot;:false,&quot;inputs&quot;:[{&quot;name&quot;:&quot;handler&quot;,&quot;type&quot;:&quot;address&quot;},{&quot;name&quot;:&quot;allowed&quot;,&quot;type&quot;:&quot;bool&quot;}],&quot;name&quot;:&quot;setHandler&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;constant&quot;:false,&quot;inputs&quot;:[{&quot;name&quot;:&quot;tokenAddresses&quot;,&quot;type&quot;:&quot;address[]&quot;},{&quot;name&quot;:&quot;buyOrSell&quot;,&quot;type&quot;:&quot;bool[]&quot;},{&quot;name&quot;:&quot;amountToObtain&quot;,&quot;type&quot;:&quot;uint256[]&quot;},{&quot;name&quot;:&quot;amountToGive&quot;,&quot;type&quot;:&quot;uint256[]&quot;},{&quot;name&quot;:&quot;tokenForOrder&quot;,&quot;type&quot;:&quot;address[]&quot;},{&quot;name&quot;:&quot;exchanges&quot;,&quot;type&quot;:&quot;address[]&quot;},{&quot;name&quot;:&quot;orderAddresses&quot;,&quot;type&quot;:&quot;address[8][]&quot;},{&quot;name&quot;:&quot;orderValues&quot;,&quot;type&quot;:&quot;uint256[6][]&quot;},{&quot;name&quot;:&quot;exchangeFees&quot;,&quot;type&quot;:&quot;uint256[]&quot;},{&quot;name&quot;:&quot;v&quot;,&quot;type&quot;:&quot;uint8[]&quot;},{&quot;name&quot;:&quot;r&quot;,&quot;type&quot;:&quot;bytes32[]&quot;},{&quot;name&quot;:&quot;s&quot;,&quot;type&quot;:&quot;bytes32[]&quot;}],&quot;name&quot;:&quot;executeOrders&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:true,&quot;stateMutability&quot;:&quot;payable&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;constant&quot;:true,&quot;inputs&quot;:[{&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;address&quot;}],&quot;name&quot;:&quot;handlerWhitelist&quot;,&quot;outputs&quot;:[{&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;bool&quot;}],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;constant&quot;:true,&quot;inputs&quot;:[],&quot;name&quot;:&quot;MAX_EXCHANGE_FEE_PERCENTAGE&quot;,&quot;outputs&quot;:[{&quot;name&quot;:&quot;&quot;,&quot;type&quot;:&quot;uint256&quot;}],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;constant&quot;:false,&quot;inputs&quot;:[{&quot;name&quot;:&quot;newOwner&quot;,&quot;type&quot;:&quot;address&quot;}],&quot;name&quot;:&quot;transferOwnership&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;inputs&quot;:[{&quot;name&quot;:&quot;proxy&quot;,&quot;type&quot;:&quot;address&quot;}],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;constructor&quot;},{&quot;payable&quot;:true,&quot;stateMutability&quot;:&quot;payable&quot;,&quot;type&quot;:&quot;fallback&quot;},{&quot;anonymous&quot;:false,&quot;inputs&quot;:[{&quot;indexed&quot;:true,&quot;name&quot;:&quot;previousOwner&quot;,&quot;type&quot;:&quot;address&quot;},{&quot;indexed&quot;:true,&quot;name&quot;:&quot;newOwner&quot;,&quot;type&quot;:&quot;address&quot;}],&quot;name&quot;:&quot;OwnershipTransferred&quot;,&quot;type&quot;:&quot;event&quot;}]</span></code>.</p>
+<p>Note that you can find the current ABI by searching the contract address returned by the Suggestor API on Etherscan and clicking on the ‘Code’ section,</p>
+</div>
+<div class="section" id="executeorders">
+<h2>executeOrders<a class="headerlink" href="#executeorders" title="Permalink to this headline">¶</a></h2>
+<p>Note that the returned values of the Suggestor API includes all of the Smart Contract executeOrders paramaters you need to get the best bid/ask orders for your token in the orders object.</p>
+<p>The executeOrders endpoint of the Smart Contract takes the following parameters:</p>
+<p>tokenAddresses (address[]) -</p>
+<p>buyOrSell (bool[]) - are you buying or selling, array</p>
+<p>amountToObtain (uint256[]) - how much Eth/tokens you’re looking to get, array</p>
+<p>amountToGive (uint256[]) - how much Eth/tokens you’re looking to supply, array</p>
+<p>tokenForOrder (address[]) -</p>
+<p>exchanges (address[]) - which exchanges to execute the orders against, array</p>
+<p>orderAddresses (address[8][]) - the addresses of the orders, array</p>
+<p>orderValues (uint256[6][]) - the total values of the orders, array</p>
+<p>exchangeFees (uint256[]) - the fees on the exchanges, array</p>
+<p>v (uint8[]) - the v value of the signed hashes, array</p>
+<p>r (bytes32[]) - the r value of the signed hashes, array</p>
+<p>s (bytes32[]) - the s value of the signed hashes, array</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="suggestor.html" class="btn btn-neutral" title="Suggestor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, eternicode.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Graph QL &mdash; totle  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Suggestor" href="suggestor.html" />
+    <link rel="prev" title="totle" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> totle
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graph QL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exchanges">exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tokens">tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#token">token</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="suggestor.html">Suggestor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smartcontract.html">Smart Contract</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">totle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Graph QL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphql.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graph-ql">
+<h1>Graph QL<a class="headerlink" href="#graph-ql" title="Permalink to this headline">¶</a></h1>
+<p>GraphQL is a query language for our API (and other APIs) and a runtime for fulfilling those queries with our existing data.</p>
+<p>Our GraphQL endpoint <code class="docutils literal notranslate"><span class="pre">https://services.totlesystem.com/graph</span></code> takes a number of optional paramaters and returns a number of optional response datas.</p>
+<p>Note that the paramters sent to query are all optional, and can be defined inside the Graph QL query instead of as a variable.</p>
+<p>This query represents every piece of data you can request, and is broken down into sections below:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+
+<span class="nx">query</span> <span class="p">(</span><span class="nx">$address</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="nx">$symbol</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="nx">$networkId</span><span class="o">:</span> <span class="p">[</span><span class="nx">Int</span><span class="p">],</span> <span class="nx">$searchString</span><span class="o">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">exchanges</span> <span class="p">{</span>
+    <span class="nx">id</span>
+  <span class="p">}</span>
+  <span class="nx">tokens</span> <span class="p">(</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">$symbol</span><span class="p">,</span> <span class="nx">networkId</span><span class="o">:</span><span class="nx">$networkId</span><span class="p">,</span> <span class="nx">searchString</span><span class="o">:</span><span class="nx">$searchString</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">name</span>
+    <span class="nx">symbol</span>
+    <span class="nx">address</span>
+    <span class="nx">decimals</span>
+    <span class="nx">iconUrl</span>
+    <span class="nx">networkId</span>
+    <span class="nx">color</span>
+    <span class="nx">tradable</span>
+    <span class="nx">price</span>
+    <span class="nx">marketCap</span>
+    <span class="nx">volume24h</span>
+  <span class="p">}</span>
+  <span class="nx">exchangeRates</span> <span class="p">{</span>
+    <span class="nx">pair</span>
+    <span class="nx">value</span>
+    <span class="nx">date</span>
+  <span class="p">}</span>
+  <span class="nx">token</span><span class="p">(</span><span class="nx">address</span><span class="o">:</span> <span class="nx">$address</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">$symbol</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">name</span>
+    <span class="nx">symbol</span>
+    <span class="nx">address</span>
+    <span class="nx">decimals</span>
+    <span class="nx">iconUrl</span>
+    <span class="nx">networkId</span>
+    <span class="nx">color</span>
+    <span class="nx">tradable</span>
+    <span class="nx">price</span>
+    <span class="nx">marketCap</span>
+    <span class="nx">volume24h</span>
+    <span class="nx">bestPrice</span> <span class="p">{</span>
+      <span class="nx">ask</span>
+      <span class="nx">bid</span>
+    <span class="p">}</span>
+    <span class="nx">exchanges</span>
+    <span class="nx">orders</span> <span class="p">{</span>
+      <span class="nx">asks</span> <span class="p">{</span>
+        <span class="nx">volume</span>
+        <span class="nx">price</span>
+        <span class="nx">exchangeId</span>
+      <span class="p">}</span>
+      <span class="nx">bids</span> <span class="p">{</span>
+        <span class="nx">volume</span>
+        <span class="nx">price</span>
+        <span class="nx">exchangeId</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">priceChange</span> <span class="p">{</span>
+      <span class="nx">change1h</span>
+      <span class="nx">change24h</span>
+      <span class="nx">change7d</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can specify that only data should be returned that you request, and build a query that asks for the data you want:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;query&quot;</span><span class="o">:</span> <span class="s2">&quot;query ($address: String) {</span>
+<span class="s2">    token(address: $address) {</span>
+<span class="s2">        address</span>
+<span class="s2">        name</span>
+<span class="s2">        bestPrice {</span>
+<span class="s2">            bid</span>
+<span class="s2">            ask</span>
+<span class="s2">        }</span>
+<span class="s2">        orders {</span>
+<span class="s2">            asks {</span>
+<span class="s2">                price</span>
+<span class="s2">                volume</span>
+<span class="s2">                exchangeId</span>
+<span class="s2">            }</span>
+<span class="s2">            bids {</span>
+<span class="s2">                price</span>
+<span class="s2">                volume</span>
+<span class="s2">                exchangeId</span>
+<span class="s2">                }</span>
+<span class="s2">            }</span>
+<span class="s2">            exchanges</span>
+<span class="s2">        }</span>
+<span class="s2">    }</span>
+<span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>In Javascript, the query above would look like this:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;operationName&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">&quot;variables&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="nx">d</span><span class="p">.</span><span class="nx">tokenAddr</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;query&quot;</span><span class="o">:</span> <span class="s2">&quot;query ($address: String) {\n  token(address: $address) {\n    address\n    name\n    bestPrice {\n      bid\n      ask\n    }\n    orders {\n      asks {\n        price\n        volume\n        exchangeId\n      }\n      bids {\n        price\n        volume\n        exchangeId\n      }\n    }\n    exchanges\n  }\n}\n&quot;</span>
+<span class="p">}</span>
+
+
+<span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;https://services.totlesystem.com/graph&#39;</span><span class="p">,</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="nx">req</span><span class="p">,</span>
+    <span class="nx">json</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="exchanges">
+<h2>exchanges<a class="headerlink" href="#exchanges" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">exchanges</span></code> returns the <code class="docutils literal notranslate"><span class="pre">id</span></code> of all exchanges on Totle. This is an internal ID used in the other functions and features of Totle.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;exchanges&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">4</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">5</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tokens">
+<h2>tokens<a class="headerlink" href="#tokens" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">tokens</span></code> can take the optional input variables <code class="docutils literal notranslate"><span class="pre">symbol</span> <span class="pre">(String)</span></code>, <code class="docutils literal notranslate"><span class="pre">networkId</span> <span class="pre">([Int])</span></code>, <code class="docutils literal notranslate"><span class="pre">searchString</span> <span class="pre">(String)</span></code>. It returns multiple tokens on the Totle platform per single query if there are multiple matches.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;tokens&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;OmiseGO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;symbol&quot;</span><span class="o">:</span> <span class="s2">&quot;OMG&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="s2">&quot;0xd26114cd6ee289accf82350c8d8487fedb8a0c07&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;decimals&quot;</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="s2">&quot;iconUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;https://s3.amazonaws.com/totle-token-icons/OMG-icon.png&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;networkId&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#5fcbee&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tradable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mf">0.013068693432351</span><span class="p">,</span>
+        <span class="s2">&quot;marketCap&quot;</span><span class="o">:</span> <span class="mf">1827159.8270379</span><span class="p">,</span>
+        <span class="s2">&quot;volume24h&quot;</span><span class="o">:</span> <span class="mf">192675.20050337</span><span class="p">,</span>
+        <span class="s2">&quot;bestPrice&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;ask&quot;</span><span class="o">:</span> <span class="mf">0.0115</span><span class="p">,</span>
+          <span class="s2">&quot;bid&quot;</span><span class="o">:</span> <span class="mf">0.012819100326229703</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;orders&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;asks&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;volume&quot;</span><span class="o">:</span> <span class="s2">&quot;1690000000000000&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="s2">&quot;1000.999999999999900000000000000000&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;exchangeId&quot;</span><span class="o">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+            <span class="p">,...</span>
+            <span class="p">],</span> <span class="s2">&quot;bids&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;volume&quot;</span><span class="o">:</span> <span class="s2">&quot;32000000000000000000&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="s2">&quot;0.012819100326229703000000000000&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;exchangeId&quot;</span><span class="o">:</span> <span class="mi">2</span>
+            <span class="p">},...</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;priceChange&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;change1h&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">1.07</span><span class="p">,</span>
+          <span class="s2">&quot;change24h&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">17.33</span><span class="p">,</span>
+          <span class="s2">&quot;change7d&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">36.28</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> is the English written name of the token.</p>
+<p><code class="docutils literal notranslate"><span class="pre">symbol</span></code> is the ticker for the token.</p>
+<p><code class="docutils literal notranslate"><span class="pre">address</span></code> is the token’s contract address.</p>
+<p><code class="docutils literal notranslate"><span class="pre">decimals</span></code> are the number of decimals the token has following the 0.</p>
+<p><code class="docutils literal notranslate"><span class="pre">iconUrl</span></code> is an address where the token’s icon is stored.</p>
+<p><code class="docutils literal notranslate"><span class="pre">networkId</span></code> is the network where the token is active, 1 being mainnet.</p>
+<p><code class="docutils literal notranslate"><span class="pre">color</span></code> is the color of the token.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tradable</span></code> is whether that token can be traded on Totle.</p>
+<p><code class="docutils literal notranslate"><span class="pre">price</span></code> is the last price of the token among DEXes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">marketCap</span></code> is the token’s market capitalization.</p>
+<p><code class="docutils literal notranslate"><span class="pre">volume24h</span></code> is the token’s aggregated 24 hour volume.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bestPrice</span></code> is an array containing the best <code class="docutils literal notranslate"><span class="pre">ask</span></code> and <code class="docutils literal notranslate"><span class="pre">bid</span></code> for the token among exchanges.</p>
+<p><code class="docutils literal notranslate"><span class="pre">orders</span></code> is an array containing the aggregated orderbook, comprised of <code class="docutils literal notranslate"><span class="pre">bids</span></code> and <code class="docutils literal notranslate"><span class="pre">asks</span></code> which are in turn arrays built from the bid/ask <code class="docutils literal notranslate"><span class="pre">volume</span></code>, <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">exchangeId</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">priceChange</span></code> is an array made up of the token’s price change in 1 hour <code class="docutils literal notranslate"><span class="pre">change1h</span></code>, 24 hours <code class="docutils literal notranslate"><span class="pre">change24h</span></code> and 7 days <code class="docutils literal notranslate"><span class="pre">change7d</span></code>.</p>
+</div>
+<div class="section" id="token">
+<h2>token<a class="headerlink" href="#token" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">token</span></code> can take the optional input variables <code class="docutils literal notranslate"><span class="pre">address</span> <span class="pre">(String)</span></code>, or <code class="docutils literal notranslate"><span class="pre">symbol</span> <span class="pre">(String)</span></code>. It returns a single token on the Totle platform per query if there is a match.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Student Coin&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;symbol&quot;</span><span class="o">:</span> <span class="s2">&quot;STU&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="s2">&quot;0x0371a82e4a9d0a4312f3ee2ac9c6958512891372&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;decimals&quot;</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+  <span class="s2">&quot;iconUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;https://s3.amazonaws.com/totle-token-icons/STU-icon.png&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;networkId&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#4a0455&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;tradable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mf">0.000014779445202365</span><span class="p">,</span>
+  <span class="s2">&quot;marketCap&quot;</span><span class="o">:</span> <span class="mf">715.08224249132</span><span class="p">,</span>
+  <span class="s2">&quot;volume24h&quot;</span><span class="o">:</span> <span class="mf">112.09178512117</span><span class="p">,</span>
+  <span class="s2">&quot;exchanges&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">3</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;bestPrice&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;ask&quot;</span><span class="o">:</span> <span class="mf">0.00003855</span><span class="p">,</span>
+    <span class="s2">&quot;bid&quot;</span><span class="o">:</span> <span class="mf">0.000010509</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;orders&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;asks&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;volume&quot;</span><span class="o">:</span> <span class="s2">&quot;3000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="s2">&quot;3.699999999999999700000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;exchangeId&quot;</span><span class="o">:</span> <span class="mi">1</span>
+      <span class="p">},...</span>
+      <span class="p">],</span>
+    <span class="s2">&quot;bids&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;volume&quot;</span><span class="o">:</span> <span class="s2">&quot;990000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="s2">&quot;0.000010509000000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;exchangeId&quot;</span><span class="o">:</span> <span class="mi">1</span>
+      <span class="p">},...</span>
+      <span class="p">],</span>
+   <span class="p">},</span>
+  <span class="s2">&quot;priceChange&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;change1h&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">3.89</span><span class="p">,</span>
+    <span class="s2">&quot;change24h&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">16.78</span><span class="p">,</span>
+    <span class="s2">&quot;change7d&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">31.89</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> is the English written name of the token.</p>
+<p><code class="docutils literal notranslate"><span class="pre">symbol</span></code> is the ticker for the token.</p>
+<p><code class="docutils literal notranslate"><span class="pre">address</span></code> is the token’s contract address.</p>
+<p><code class="docutils literal notranslate"><span class="pre">decimals</span></code> are the number of decimals the token has following the 0.</p>
+<p><code class="docutils literal notranslate"><span class="pre">iconUrl</span></code> is an address where the token’s icon is stored.</p>
+<p><code class="docutils literal notranslate"><span class="pre">networkId</span></code> is the network where the token is active, 1 being mainnet.</p>
+<p><code class="docutils literal notranslate"><span class="pre">color</span></code> is the color of the token.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tradable</span></code> is whether that token can be traded on Totle.</p>
+<p><code class="docutils literal notranslate"><span class="pre">price</span></code> is the last price of the token among DEXes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">marketCap</span></code> is the token’s market capitalization.</p>
+<p><code class="docutils literal notranslate"><span class="pre">volume24h</span></code> is the token’s aggregated 24 hour volume.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bestPrice</span></code> is an array containing the best <code class="docutils literal notranslate"><span class="pre">ask</span></code> and <code class="docutils literal notranslate"><span class="pre">bid</span></code> for the token among exchanges.</p>
+<p><code class="docutils literal notranslate"><span class="pre">orders</span></code> is an array containing the aggregated orderbook, comprised of <code class="docutils literal notranslate"><span class="pre">bids</span></code> and <code class="docutils literal notranslate"><span class="pre">asks</span></code> which are in turn arrays built from the bid/ask <code class="docutils literal notranslate"><span class="pre">volume</span></code>, <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">exchangeId</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">priceChange</span></code> is an array made up of the token’s price change in 1 hour <code class="docutils literal notranslate"><span class="pre">change1h</span></code>, 24 hours <code class="docutils literal notranslate"><span class="pre">change24h</span></code> and 7 days <code class="docutils literal notranslate"><span class="pre">change7d</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="suggestor.html" class="btn btn-neutral float-right" title="Suggestor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="totle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, eternicode.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
