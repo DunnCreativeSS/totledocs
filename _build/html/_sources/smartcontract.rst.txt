@@ -24,7 +24,7 @@ Note that the returned values of the Suggestor API includes all of the Smart Con
 
 The executeOrders endpoint of the Smart Contract takes the following parameters:
 
-tokenAddresses (address[]) - 
+tokenAddresses (address[]) - the token address at the trades level
 
 buyOrSell (bool[]) - are you buying or selling, array
 
@@ -32,7 +32,7 @@ amountToObtain (uint256[]) - how much Eth/tokens you're looking to get, array
 
 amountToGive (uint256[]) - how much Eth/tokens you're looking to supply, array
 
-tokenForOrder (address[]) - 
+tokenForOrder (address[]) - the token address at the orders level. The reason that the tokenForOrder was added was so that we could make sure that each “order” was for the correct token and easily spot problems if the payload was incorrect.
 
 exchanges (address[]) - which exchanges to execute the orders against, array
 

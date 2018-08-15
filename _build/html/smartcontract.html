@@ -166,11 +166,11 @@
 <h2>executeOrders<a class="headerlink" href="#executeorders" title="Permalink to this headline">¶</a></h2>
 <p>Note that the returned values of the Suggestor API includes all of the Smart Contract executeOrders paramaters you need to get the best bid/ask orders for your token in the orders object.</p>
 <p>The executeOrders endpoint of the Smart Contract takes the following parameters:</p>
-<p>tokenAddresses (address[]) -</p>
+<p>tokenAddresses (address[]) - the token address at the trades level</p>
 <p>buyOrSell (bool[]) - are you buying or selling, array</p>
 <p>amountToObtain (uint256[]) - how much Eth/tokens you’re looking to get, array</p>
 <p>amountToGive (uint256[]) - how much Eth/tokens you’re looking to supply, array</p>
-<p>tokenForOrder (address[]) -</p>
+<p>tokenForOrder (address[]) - the token address at the orders level. The reason that the tokenForOrder was added was so that we could make sure that each “order” was for the correct token and easily spot problems if the payload was incorrect.</p>
 <p>exchanges (address[]) - which exchanges to execute the orders against, array</p>
 <p>orderAddresses (address[8][]) - the addresses of the orders, array</p>
 <p>orderValues (uint256[6][]) - the total values of the orders, array</p>
